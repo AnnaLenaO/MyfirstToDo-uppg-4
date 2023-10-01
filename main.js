@@ -5,8 +5,9 @@ const button = document.querySelector("#saveBtn");
 const message = document.querySelector("#userMessage");
 const list = document.querySelector("ul");
 
-// Declare the variable countComplete
+// Declare the variable countComplete & toDoArray
 let countComplete = 0;
+const toDoArray = [];
 
 // Add an EventListener to the button
 button.addEventListener("click", function () {
@@ -23,6 +24,10 @@ button.addEventListener("click", function () {
         message.innerText = "";
     }
 
+    // Add todo to toDoArray
+    let textToDo = input.value;
+    toDoArray.push(textToDo);
+
     // Create a new li element & add it to the list
     const toDo = document.createElement("li");
     list.appendChild(toDo);
@@ -30,7 +35,7 @@ button.addEventListener("click", function () {
     // Create a new span element in the new li element
     const toDoLabel = document.createElement("span");
 
-    // Make the toDo visible in the list by adding it to the new span element
+    // Make the toDo visible in the list & adding it to the new span element
     toDoLabel.innerText = text;
     toDo.appendChild(toDoLabel);
 
