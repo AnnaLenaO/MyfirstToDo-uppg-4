@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>My ToDo</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+<body>
+  <h1 class="styleMyToDo">ToDo</h1>
+  <p id="allComplete">0 complete</p>
+
+  <!--Input ToDo from user-->
+  <label for="inputToDo">New task:</label>
+  <input type="text" id= "inputToDo" name="oneToDo">
+
+  <!--Button shall add ToDo to list-->
+  <button id="saveBtn">Save</button>
+
+  <!--Additional info when the user try to save empty input to the list-->
+  <small id="userMessage"></small>
+
+  <!--List with ToDo-->
+  <ul>
+
+  </ul>
+
+<!--Additional info-->
+    <div>
+        <small class = "styleMyToDo">Click on a task to mark it as complete</small>
+    </div>
+    <div>
+        <small class="styleMyToDo">Click again to unmark</small>
+    </div>
+    <div>
+        <small class="styleMyToDo">Click on the Basket to delete the task</small>
+    </div>
+
+    <script src='main.js'></script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+body{background-color: rgb(238, 230, 222);}
+
+.styleMyToDo{color: rgb(81, 4, 106);}
+
+#allComplete{color: rgb(1, 84, 1); font-style: oblique;}
+
+#saveBtn{color: rgb(81, 4, 106);}
+
+.markComplete{color: rgb(1, 84, 1); text-decoration: line-through;}
