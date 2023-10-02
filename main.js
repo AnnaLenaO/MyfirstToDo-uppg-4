@@ -5,22 +5,23 @@ const button = document.querySelector("#saveBtn");
 const message = document.querySelector("#userMessage");
 const list = document.querySelector("ul");
 
-// Declare the variables countComplete & toDoArray
+// Declare variables countComplete, toDoArray & extraToDoArray
 let countComplete = 0;
 const toDoArray = [];
+const extraToDoArray = [];
 
-// Handle status för a todo in toDoArray
+// Handle status for a toDo in toDoArray
 // Parameter toDoText & completedToDo (bool)
 function changeStatusToDo(toDoText, completedToDo) {
 
     // Find index by looking at object & value name in toDoArray by using method map
     let correctIndex = toDoArray.map(t => t.name).indexOf(toDoText);
 
-    // Change status for a todo in toDoArray at correct index
+    // Change status for a toDo in toDoArray at correct index
     toDoArray[correctIndex].status = completedToDo;
 }
 
-// Add an EventListener to the button
+// Add EventListener to the button
 button.addEventListener("click", function () {
 
     // Declare the variable text with value from input
@@ -35,24 +36,33 @@ button.addEventListener("click", function () {
         message.innerText = "";
     }
 
-    // Add todo from user to toDoArray (create a new object & add it to the Array)
+    // Add todo from user to toDoArray (create a new object & add it to the toDoArray)
     const toDoToArray = { name: text, status: false };
     toDoArray.push(toDoToArray);
-    // let textToDo = input.value;
-    // toDoArray.push(textToDo);
 
-    // Create a new li element & add it to the list
+    // Add todo text from user to extraToDoArray
+    extraToDoArray.push(text);
+
+    // Create a li element & add it to the list
     const toDo = document.createElement("li");
     list.appendChild(toDo);
 
-    // Create a new span element in the new li element
+    // Create a span element in the li element
     const toDoLabel = document.createElement("span");
 
-    // Make the toDo visible in the list & adding it to the new span element
+    // Add text to the span element & adding it to the li element
     toDoLabel.innerText = text;
     toDo.appendChild(toDoLabel);
 
-    // Add a listener to the span & uppdate countComplete
+    // Create a new span element (trashcan) in the li element
+    const trashcan = document.createElement("span");
+
+    // Add traschcan symbol to the new span element & adding it to the li element
+    trashcan.innerHTML = " &#128465;";
+    trashcan.setAttribute("class", "deletetoDo");
+    toDo.appendChild(trashcan);
+
+    // Add EventLlistener to the span & uppdate countComplete
     toDoLabel.addEventListener("click", function () {
 
         // Alternate between completed & not completed toDo
@@ -61,23 +71,45 @@ button.addEventListener("click", function () {
             // Unmark the toDo as completed & decrease countComplete
             toDo.setAttribute("class", "");
 
-            // Change status for a todo in Array to false
+            // Change status for a toDo in toDoArray to false
             let clickedToDo = toDo.firstChild.firstChild.textContent;
             changeStatusToDo(clickedToDo, false);
+
             countComplete--;
         }
         else {
             // Mark the toDo as completed & increase countComplete
             toDo.setAttribute("class", "markComplete");
 
-            // Change status for a todo in Array to true
+            // Change status for a toDo in toDoArray to true
             let clickedToDo = toDo.firstChild.firstChild.textContent;
             changeStatusToDo(clickedToDo, true);
+
             countComplete++;
         }
 
         // Create visible text for number of completed toDo by using a string template
         completed.innerText = `${countComplete} completed`;
+    })
+
+    // Add EventListener to the trashcan for deleting a toDo
+    trashcan.addEventListener("click", function () {
+
+        // Uppdate countComplete
+        if (toDo.getAttribute("class") == "markComplete") {
+            countComplete--
+        }
+
+        completed.innerText = `${countComplete} completed`;
+
+        // Uppdate extraToDoArray
+        //  Declare the span to declare the index so that text can be removed from extraToDoArray
+        let removeText = toDo.firstChild.firstChild.textContent;
+        let removeIndex = extraToDoArray.indexOf(removeText);
+        extraToDoArray.splice(removeIndex, 1);
+
+        // Remove toDo
+        toDo.remove();
     })
 
     // Empty input from user after the toDo has been added to the list

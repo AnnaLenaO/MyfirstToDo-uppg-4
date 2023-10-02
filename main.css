@@ -6,4 +6,6 @@ body{background-color: rgb(238, 230, 222);}
 
 #saveBtn{color: rgb(81, 4, 106);}
 
+.deletetoDo{color: rgb(210, 22, 35); margin-left: 10px; cursor: pointer;}
+
 .markComplete{color: rgb(1, 84, 1); text-decoration: line-through;}
