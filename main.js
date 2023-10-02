@@ -5,9 +5,20 @@ const button = document.querySelector("#saveBtn");
 const message = document.querySelector("#userMessage");
 const list = document.querySelector("ul");
 
-// Declare the variable countComplete & toDoArray
+// Declare the variables countComplete & toDoArray
 let countComplete = 0;
 const toDoArray = [];
+
+// Handle status för a todo in toDoArray
+// Parameter toDoText & completedToDo (bool)
+function changeStatusToDo(toDoText, completedToDo) {
+
+    // Find index by looking at object & value name in toDoArray by using method map
+    let correctIndex = toDoArray.map(t => t.name).indexOf(toDoText);
+
+    // Change status for a todo in toDoArray at correct index
+    toDoArray[correctIndex].status = completedToDo;
+}
 
 // Add an EventListener to the button
 button.addEventListener("click", function () {
@@ -24,9 +35,11 @@ button.addEventListener("click", function () {
         message.innerText = "";
     }
 
-    // Add todo to toDoArray
-    let textToDo = input.value;
-    toDoArray.push(textToDo);
+    // Add todo from user to toDoArray (create a new object & add it to the Array)
+    const toDoToArray = { name: text, status: false };
+    toDoArray.push(toDoToArray);
+    // let textToDo = input.value;
+    // toDoArray.push(textToDo);
 
     // Create a new li element & add it to the list
     const toDo = document.createElement("li");
@@ -47,11 +60,19 @@ button.addEventListener("click", function () {
 
             // Unmark the toDo as completed & decrease countComplete
             toDo.setAttribute("class", "");
+
+            // Change status for a todo in Array to false
+            let clickedToDo = toDo.firstChild.firstChild.textContent;
+            changeStatusToDo(clickedToDo, false);
             countComplete--;
         }
         else {
             // Mark the toDo as completed & increase countComplete
             toDo.setAttribute("class", "markComplete");
+
+            // Change status for a todo in Array to true
+            let clickedToDo = toDo.firstChild.firstChild.textContent;
+            changeStatusToDo(clickedToDo, true);
             countComplete++;
         }
 
