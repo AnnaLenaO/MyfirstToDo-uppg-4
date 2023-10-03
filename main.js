@@ -1,5 +1,5 @@
 // Get completed, input, button, message & list
-const completed = document.querySelector("#allComplete")
+const completed = document.querySelector("#allComplete");
 const input = document.querySelector("#inputToDo");
 const button = document.querySelector("#saveBtn");
 const message = document.querySelector("#userMessage");
