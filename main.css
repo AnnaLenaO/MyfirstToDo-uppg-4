@@ -1,11 +1,27 @@
-body{background-color: rgb(238, 230, 222);}
+body {
+    background-color: rgb(238, 230, 222);
+}
 
-.styleMyToDo{color: rgb(81, 4, 106);}
+.styleMyToDo {
+    color: rgb(81, 4, 106);
+}
 
-#allComplete{color: rgb(1, 84, 1); font-style: oblique;}
+#allComplete {
+    color: rgb(1, 84, 1);
+    font-style: oblique;
+}
 
-#saveBtn{color: rgb(81, 4, 106);}
+#saveBtn {
+    color: rgb(81, 4, 106);
+}
 
-.deletetoDo{color: rgb(210, 22, 35); margin-left: 10px; cursor: pointer;}
+.deletetoDo {
+    color: rgb(210, 22, 35);
+    margin-left: 10px;
+    cursor: pointer;
+}
 
-.markComplete{color: rgb(1, 84, 1); text-decoration: line-through;}
+.markComplete {
+    color: rgb(1, 84, 1);
+    text-decoration: line-through;
+}
