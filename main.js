@@ -29,11 +29,13 @@ button.addEventListener("click", function () {
 
     // No emty input can be added to the list
     if (text.length == 0) {
-        message.innerText = "Write your task in the box";
+        message.innerText = "Input must not be empty";
+        message.setAttribute("class", "userMessageBlinking");
         return;
     }
     else {
         message.innerText = "";
+        message.setAttribute("class", "");
     }
 
     // Add todo from user to toDoArray (create a new object & add it to the toDoArray)
